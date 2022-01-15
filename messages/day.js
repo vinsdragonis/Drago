@@ -1,4 +1,4 @@
-const time = [
+const day = [
     {
         id: 1,
         received: "What is the day?",
@@ -13,4 +13,4 @@ const time = [
     },
 ];
 
-module.exports = time;
+module.exports = day;
