@@ -1,4 +1,8 @@
-const greetings = require('./greetings');
+const greetings = require('./messages/greetings');
+const date = require('./messages/date');
+const time = require('./messages/time');
+const formatDate = require('./parsers/dateParser');
+const formatTime = require('./parsers/timeParser');
 require('dotenv').config();
 
 const { Client, Intents } = require('discord.js');
@@ -16,8 +20,20 @@ bot.on('messageCreate', (message) => {
     console.log(`${message.author.username} says "${message.content}"`);
     
     for (msg in greetings) {
-        if (message.content === greetings[msg].recived) {
+        if (message.content.toLowerCase() === greetings[msg].recived.toLowerCase()) {
             message.reply(`Hi there, ${message.author.username}!`);
+        }
+    }
+
+    for (msg in time) {
+        if (message.content.toLowerCase() === time[msg].recived.toLowerCase()) {
+            message.reply(`${formatTime(new Date())}`);
+        }
+    }
+
+    for (msg in date) {
+        if (message.content.toLowerCase() === date[msg].recived.toLowerCase()) {
+            message.reply(`${formatDate(new Date())}`);
         }
     }
 });
