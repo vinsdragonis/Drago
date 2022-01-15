@@ -1,7 +1,9 @@
 const greetings = require('./messages/greetings');
 const date = require('./messages/date');
 const time = require('./messages/time');
+const day = require('./messages/day');
 const formatDate = require('./parsers/dateParser');
+const formatDay = require('./parsers/dayParser');
 const getTime = require('./parsers/timeParser');
 require('dotenv').config();
 
@@ -34,6 +36,12 @@ bot.on('messageCreate', (message) => {
     for (msg in time) {
         if (message.content.toLowerCase() === time[msg].recived.toLowerCase()) {
             message.reply(`${getTime()}`);
+        }
+    }
+    
+    for (msg in day) {
+        if (message.content.toLowerCase() === day[msg].recived.toLowerCase()) {
+            message.reply(`${formatDay()}`);
         }
     }
 });
