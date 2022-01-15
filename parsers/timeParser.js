@@ -1,9 +1,11 @@
-function formatTime(time){
-    var date = new Date(parseInt(time));
-    return date.toLocaleTimeString(navigator.language, {
-        hour: '2-digit',
-        minute:'2-digit'
-    });
-}
+function getTime() {
+    var currentHours = new Date(Date.now()).getHours();
+    var currentMinutes = new Date(Date.now()).getMinutes();
 
-module.exports = formatTime;
+    currentHours = ("0" + currentHours).slice(-2);
+    currentMinutes = ("0" + currentMinutes).slice(-2);
+
+    return " " + currentHours + ":" + currentMinutes;
+  }
+
+module.exports = getTime;
