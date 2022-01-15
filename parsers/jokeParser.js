@@ -5,4 +5,14 @@ const getJoke = () => {
     return jokes;
 }
 
-module.exports = getJoke;
+const getPun = () => {
+    let pun = Memer.pun();
+    return pun;
+}
+
+const getQuote = () => {
+    let quote = Memer.quotes();
+    return quote;
+}
+
+module.exports = {getJoke, getPun, getQuote};

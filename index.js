@@ -3,10 +3,12 @@ const date = require('./messages/date');
 const time = require('./messages/time');
 const day = require('./messages/day');
 const joke = require('./messages/joke');
+const pun = require('./messages/pun');
+const quote = require('./messages/quote');
 const formatDate = require('./parsers/dateParser');
 const formatDay = require('./parsers/dayParser');
 const getTime = require('./parsers/timeParser');
-const getJoke = require('./parsers/jokeParser');
+const { getJoke, getPun, getQuote } = require('./parsers/jokeParser');
 require('dotenv').config();
 
 const { Client, Intents } = require('discord.js');
@@ -52,6 +54,18 @@ bot.on('messageCreate', async (message) => {
     for (msg in joke) {
         if (message.content.toLowerCase() === joke[msg].received.toLowerCase()) {
             message.channel.send(`${getJoke()}`);
+        }
+    }
+
+    for (msg in pun) {
+        if (message.content.toLowerCase() === pun[msg].received.toLowerCase()) {
+            message.channel.send(`${getPun()}`);
+        }
+    }
+
+    for (msg in quote) {
+        if (message.content.toLowerCase() === quote[msg].received.toLowerCase()) {
+            message.channel.send(`${getQuote()}`);
         }
     }
 });
