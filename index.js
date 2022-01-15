@@ -1,6 +1,6 @@
 const greetings = require('./messages/greetings');
 const dateAndTime = require('./messages/dateAndTime');
-const joke = require('./messages/joke');
+const jokesAndPuns = require('./messages/jokesAndPuns');
 require('dotenv').config();
 
 const { Client, Intents } = require('discord.js');
@@ -37,10 +37,10 @@ bot.on('messageCreate', async (message) => {
     }
 
     // DADDY JOKES
-    for (msg in joke) {
-        for (res in joke[msg].received) {
-            if (message.content.toLowerCase() === joke[msg].received[res].toLowerCase()) {
-                message.channel.send(`${joke[msg].reply}`);
+    for (msg in jokesAndPuns) {
+        for (res in jokesAndPuns[msg].received) {
+            if (message.content.toLowerCase() === jokesAndPuns[msg].received[res].toLowerCase()) {
+                message.channel.send(`${jokesAndPuns[msg].reply}`);
             }
         }
     }
