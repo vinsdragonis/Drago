@@ -1,9 +1,6 @@
 const greetings = require('./messages/greetings');
 const dateAndTime = require('./messages/dateAndTime');
 const joke = require('./messages/joke');
-const pun = require('./messages/pun');
-const quote = require('./messages/quote');
-const { getJoke, getPun, getQuote } = require('./parsers/jokeParser');
 require('dotenv').config();
 
 const { Client, Intents } = require('discord.js');
@@ -23,7 +20,7 @@ bot.on('messageCreate', async (message) => {
     
     // GREETINGS
     for (msg in greetings) {
-        for(res in greetings[msg].received){
+        for(res in greetings[msg].received) {
             if (message.content.toLowerCase() === greetings[msg].received[res].toLowerCase()) {
                 message.channel.send(`${greetings[msg].reply}, ${message.author.username}!`);
             }
@@ -32,28 +29,19 @@ bot.on('messageCreate', async (message) => {
 
     // DATE AND TIME
     for (msg in dateAndTime) {
-        for (res in dateAndTime[msg].received){
+        for (res in dateAndTime[msg].received) {
             if (message.content.toLowerCase() === dateAndTime[msg].received[res].toLowerCase()) {
                 message.channel.send(`${dateAndTime[msg].reply}`);
             }
         }
     }
 
+    // DADDY JOKES
     for (msg in joke) {
-        if (message.content.toLowerCase() === joke[msg].received.toLowerCase()) {
-            message.channel.send(`${getJoke()}`);
-        }
-    }
-
-    for (msg in pun) {
-        if (message.content.toLowerCase() === pun[msg].received.toLowerCase()) {
-            message.channel.send(`${getPun()}`);
-        }
-    }
-
-    for (msg in quote) {
-        if (message.content.toLowerCase() === quote[msg].received.toLowerCase()) {
-            message.channel.send(`${getQuote()}`);
+        for (res in joke[msg].received) {
+            if (message.content.toLowerCase() === joke[msg].received[res].toLowerCase()) {
+                message.channel.send(`${joke[msg].reply}`);
+            }
         }
     }
 
