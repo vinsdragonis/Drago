@@ -24,25 +24,27 @@ bot.on('messageCreate', async (message) => {
     if (message.author.bot) return;
     
     for (msg in greetings) {
-        if (message.content.toLowerCase() === greetings[msg].recived.toLowerCase()) {
-            message.channel.send(`${greetings[msg].recived}, ${message.author.username}!`);
+        for(res in greetings[msg].received){
+            if (message.content.toLowerCase() === greetings[msg].received[res].toLowerCase()) {
+                message.channel.send(`${greetings[msg].reply}, ${message.author.username}!`);
+            }
         }
     }
 
     for (msg in date) {
-        if (message.content.toLowerCase() === date[msg].recived.toLowerCase()) {
+        if (message.content.toLowerCase() === date[msg].received.toLowerCase()) {
             message.channel.send(`${formatDate(new Date())}`);
         }
     }
 
     for (msg in time) {
-        if (message.content.toLowerCase() === time[msg].recived.toLowerCase()) {
+        if (message.content.toLowerCase() === time[msg].received.toLowerCase()) {
             message.channel.send(`${getTime()}`);
         }
     }
     
     for (msg in day) {
-        if (message.content.toLowerCase() === day[msg].recived.toLowerCase()) {
+        if (message.content.toLowerCase() === day[msg].received.toLowerCase()) {
             message.channel.send(`${formatDay()}`);
         }
     }

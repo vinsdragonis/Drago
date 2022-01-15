@@ -1,19 +1,19 @@
 const time = [
     {
         id: 1,
-        recived: "What is the time?",
+        received: "What is the time?",
     },
     {
         id: 2,
-        recived: "Tell me the time",
+        received: "Tell me the time",
     },
     {
         id: 3,
-        recived: "time",
+        received: "time",
     },
     {
         id: 4,
-        recived: "What is the time",
+        received: "What is the time",
     },
 ];
 

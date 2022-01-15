@@ -1,19 +1,19 @@
 const date = [
     {
         id: 1,
-        recived: "What is the date?",
+        received: "What is the date?",
     },
     {
         id: 2,
-        recived: "Tell me the date",
+        received: "Tell me the date",
     },
     {
         id: 3,
-        recived: "date",
+        received: "date",
     },
     {
         id: 4,
-        recived: "What is the date",
+        received: "What is the date",
     },
 ];
 

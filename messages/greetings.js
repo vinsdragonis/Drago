@@ -1,51 +1,32 @@
 const greetings = [
     {
         id: 1,
-        recived: "Hi",
+        received: [
+            "Hi",
+            "Hi there",
+            "Hello",
+            "Hey",
+            "Hey there"
+        ],
+        reply: "Hi there"
     },
     {
         id: 2,
-        recived: "Hi there",
+        received: [
+            "Wassup",
+            "Sup"
+        ],
+        reply: "Nothing much. Wassup",
     },
     {
         id: 3,
-        recived: "Hello",
-    },
-    {
-        id: 4,
-        recived: "Hey",
-    },
-    {
-        id: 5,
-        recived: "Hey there",
-    },
-    {
-        id: 6,
-        recived: "Wassup",
-    },
-    {
-        id: 7,
-        recived: "Hi!",
-    },
-    {
-        id: 8,
-        recived: "Hi there!",
-    },
-    {
-        id: 9,
-        recived: "Hello!",
-    },
-    {
-        id: 10,
-        recived: "Hey!",
-    },
-    {
-        id: 11,
-        recived: "Hey there!",
-    },
-    {
-        id: 12,
-        recived: "Wassup!",
+        received: [
+            "How are you doing",
+            "How are you doing?",
+            "How have you been doing",
+            "How have you been doing?",
+        ],
+        reply: "I'm good. And I hope you're doing well too",
     },
 ];
 
