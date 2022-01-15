@@ -1,0 +1,26 @@
+{
+  "name": "drago",
+  "version": "1.0.0",
+  "description": "A discord bot built using Node.js and Discord.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinsdragonis/Drago.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinsdragonis/Drago/issues"
+  },
+  "homepage": "https://github.com/vinsdragonis/Drago#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^12.0.3",
+    "nodemon": "^2.0.15"
+  }
+}
