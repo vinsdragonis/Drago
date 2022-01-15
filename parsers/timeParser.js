@@ -6,6 +6,6 @@ function getTime() {
     currentMinutes = ("0" + currentMinutes).slice(-2);
 
     return " " + currentHours + ":" + currentMinutes;
-  }
+}
 
 module.exports = getTime;
