@@ -20,10 +20,12 @@ bot.on('ready', () => {
 
 bot.on('messageCreate', async (message) => {
     // console.log(`${message.author.username} says "${message.content}"`);
+
+    if (message.author.bot) return;
     
     for (msg in greetings) {
         if (message.content.toLowerCase() === greetings[msg].recived.toLowerCase()) {
-            message.channel.send(`Hi there, ${message.author.username}!`);
+            message.channel.send(`${greetings[msg].recived}, ${message.author.username}!`);
         }
     }
 
