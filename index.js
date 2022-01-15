@@ -18,30 +18,30 @@ bot.on('ready', () => {
     console.log(`${bot.user.tag} has logged in`);
 });
 
-bot.on('messageCreate', (message) => {
+bot.on('messageCreate', async (message) => {
     // console.log(`${message.author.username} says "${message.content}"`);
     
     for (msg in greetings) {
         if (message.content.toLowerCase() === greetings[msg].recived.toLowerCase()) {
-            message.reply(`Hi there, ${message.author.username}!`);
+            message.channel.send(`Hi there, ${message.author.username}!`);
         }
     }
 
     for (msg in date) {
         if (message.content.toLowerCase() === date[msg].recived.toLowerCase()) {
-            message.reply(`${formatDate(new Date())}`);
+            message.channel.send(`${formatDate(new Date())}`);
         }
     }
 
     for (msg in time) {
         if (message.content.toLowerCase() === time[msg].recived.toLowerCase()) {
-            message.reply(`${getTime()}`);
+            message.channel.send(`${getTime()}`);
         }
     }
     
     for (msg in day) {
         if (message.content.toLowerCase() === day[msg].recived.toLowerCase()) {
-            message.reply(`${formatDay()}`);
+            message.channel.send(`${formatDay()}`);
         }
     }
 });
