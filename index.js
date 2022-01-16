@@ -15,10 +15,6 @@ bot.on('ready', () => {
     console.log(`${bot.user.username} has logged in`);
 });
 
-bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('channelID').send("Welcome to the channel! 😀"); 
-});
-
 bot.on('messageCreate', async (message) => {
     if (message.author.bot) return;
     
@@ -86,7 +82,7 @@ bot.on('messageCreate', async (message) => {
             // SHOWS HELP
             const helpEmbed = new MessageEmbed()
                 .setColor("#0099ff")
-                .setTitle("Vulnahkriin help")
+                .setTitle("Vulnahkriin's guide")
                 .setDescription("My prefix for commands is $")
                 .addFields(
                     { name: '$kick id', value: `Kicks user from server` },
@@ -106,7 +102,7 @@ bot.on('messageCreate', async (message) => {
 bot.on('messageReactionAdd', (reaction, user) => {
     const { name } = reaction.emoji;
     const member = reaction.message.guild.members.cache.get(user.id);
-    if (reaction.message.id === '932272729120452669') {
+    if (reaction.message.id === '932304174635442207') {
         switch (name) {
             case '🧙':
                 member.roles.add('932275102203146300');
@@ -124,7 +120,7 @@ bot.on('messageReactionAdd', (reaction, user) => {
 bot.on('messageReactionRemove', (reaction, user) => {
     const { name } = reaction.emoji;
     const member = reaction.message.guild.members.cache.get(user.id);
-    if (reaction.message.id === '932272729120452669') {
+    if (reaction.message.id === '932304174635442207') {
         switch (name) {
             case '🧙':
                 member.roles.remove('932275102203146300');

@@ -6,7 +6,12 @@ const greetings = [
             "Hi there",
             "Hello",
             "Hey",
-            "Hey there"
+            "Hey there",
+            "hi",
+            "hi there",
+            "hello",
+            "hey",
+            "hey there"
         ],
         reply: "Hi there"
     },
@@ -14,7 +19,9 @@ const greetings = [
         id: 2,
         received: [
             "Wassup",
-            "Sup"
+            "Sup",
+            "wassup",
+            "sup",
         ],
         reply: "Nothing much. Wassup",
     },
@@ -25,6 +32,10 @@ const greetings = [
             "How are you doing?",
             "How have you been doing",
             "How have you been doing?",
+            "how are you doing",
+            "how are you doing?",
+            "how have you been doing",
+            "how have you been doing?",
         ],
         reply: "I'm good. And I hope you're doing well too",
     },
