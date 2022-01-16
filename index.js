@@ -3,7 +3,7 @@ const dateAndTime = require('./messages/dateAndTime');
 const jokesAndPuns = require('./messages/jokesAndPuns');
 require('dotenv').config();
 
-const { Client, Intents, Permissions } = require('discord.js');
+const { Client, Intents, Permissions, MessageEmbed } = require('discord.js');
 const PREFIX = "$";
 
 const bot = new Client({
@@ -72,25 +72,29 @@ bot.on('messageCreate', async (message) => {
             } catch (err) {
                 message.channel.send('An error occured. Either I do not have permissions or the user was not found');
             }
-        } else if (CMD_NAME === 'unban') {
-
-            // UNBAN MEMBER
-            if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
-                return message.reply('I do not have permissions to use that command :(');
-            
-            if (args.length === 0) return message.reply('Please provide an ID.');
-
-            try {
-                const user = await message.guild.members.unban(args[0]);
-                message.channel.send(`${user} was unbanned successfully`);
-            } catch (err) {
-                message.channel.send('An error occured. Either I do not have permissions or the user was not found');
-            }
-        } else if (CMD_NAME === 'speed') {
+        } else if (CMD_NAME === 'ping') {
 
             // MESSAGE LATENCY
             const timeTaken = Date.now() - message.createdTimestamp;
-            message.reply(`Latency of Message = ${timeTaken}ms.`);
+            message.reply(`Latency of Message = ${timeTaken}ms. 🐉`);
+        } else if (CMD_NAME === "help") {
+
+            // SHOWS HELP
+            const helpEmbed = new MessageEmbed()
+                .setColor("#0099ff")
+                .setTitle("Vulnahkriin help")
+                .setDescription("My prefix for commands is $")
+                .addFields(
+                    { name: '$kick id', value: `Kicks user from server` },
+                    { name: '$ban id', value: `Bans user from server`},
+                    { name: '$joke', value: `Wanna hear a joke? I got tons of them` },
+                    { name: '$joke', value: `Wanna hear some puns? I got tons puns` },
+                    { name: '$quote', value: `I got tons quotes` },
+                    { name: '$ping', value: `Displays ping for message` },
+                )
+                .setTimestamp();
+
+            message.channel.send({ embeds: [helpEmbed] });
         }
     }
 });
