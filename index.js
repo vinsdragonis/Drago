@@ -53,7 +53,7 @@ bot.on('messageCreate', async (message) => {
         
         if (CMD_NAME === 'kick') {
             if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
-                return message.reply('I do not have permissions to use that command lol');
+                return message.reply('I do not have permissions to use that command :(');
             
             if (args.length === 0) message.reply('Please provide an ID.');
             
