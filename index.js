@@ -55,7 +55,7 @@ bot.on('messageCreate', async (message) => {
             if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
                 return message.reply('I do not have permissions to use that command :(');
             
-            if (args.length === 0) message.reply('Please provide an ID.');
+            if (args.length === 0) return message.reply('Please provide an ID.');
             
             const member = message.guild.members.cache.get(args[0]);
             
@@ -71,11 +71,24 @@ bot.on('messageCreate', async (message) => {
             if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
                 return message.reply('I do not have permissions to use that command :(');
             
-            if (args.length === 0) message.reply('Please provide an ID.');
+            if (args.length === 0) return message.reply('Please provide an ID.');
 
             try {
                 const user = await message.guild.members.ban(args[0]);
                 message.channel.send(`${user} was banned successfully`);
+            } catch (err) {
+                // console.log(err);
+                message.channel.send('An error occured. Either I do not have permissions or the user was not found');
+            }
+        } else if (CMD_NAME === 'unban') {
+            if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
+                return message.reply('I do not have permissions to use that command :(');
+            
+            if (args.length === 0) return message.reply('Please provide an ID.');
+
+            try {
+                const user = await message.guild.members.unban(args[0]);
+                message.channel.send(`${user} was unbanned successfully`);
             } catch (err) {
                 // console.log(err);
                 message.channel.send('An error occured. Either I do not have permissions or the user was not found');
