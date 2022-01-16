@@ -15,6 +15,10 @@ bot.on('ready', () => {
     console.log(`${bot.user.username} has logged in`);
 });
 
+bot.on('guildMemberAdd', member => {
+    member.guild.channels.get('channelID').send("Welcome to the channel! 😀"); 
+});
+
 bot.on('messageCreate', async (message) => {
     if (message.author.bot) return;
     
@@ -95,6 +99,42 @@ bot.on('messageCreate', async (message) => {
                 .setTimestamp();
 
             message.channel.send({ embeds: [helpEmbed] });
+        }
+    }
+});
+
+bot.on('messageReactionAdd', (reaction, user) => {
+    const { name } = reaction.emoji;
+    const member = reaction.message.guild.members.cache.get(user.id);
+    if (reaction.message.id === '932272729120452669') {
+        switch (name) {
+            case '🧙':
+                member.roles.add('932275102203146300');
+                break;
+            case '🏹':
+                member.roles.add('932275185036455977');
+                break;
+            case '⚔':
+                member.roles.add('932275701879537725');
+                break;
+        }
+    }
+});
+
+bot.on('messageReactionRemove', (reaction, user) => {
+    const { name } = reaction.emoji;
+    const member = reaction.message.guild.members.cache.get(user.id);
+    if (reaction.message.id === '932272729120452669') {
+        switch (name) {
+            case '🧙':
+                member.roles.remove('932275102203146300');
+                break;
+            case '🏹':
+                member.roles.remove('932275185036455977');
+                break;
+            case '⚔':
+                member.roles.remove('932275701879537725');
+                break;
         }
     }
 });
