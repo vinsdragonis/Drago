@@ -3,7 +3,7 @@ const dateAndTime = require('./messages/dateAndTime');
 const jokesAndPuns = require('./messages/jokesAndPuns');
 require('dotenv').config();
 
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, Permissions } = require('discord.js');
 const PREFIX = "$";
 
 const bot = new Client({
@@ -36,7 +36,7 @@ bot.on('messageCreate', async (message) => {
         }
     }
 
-    // DADDY JOKES
+    // DAD JOKES
     for (msg in jokesAndPuns) {
         for (res in jokesAndPuns[msg].received) {
             if (message.content.toLowerCase() === jokesAndPuns[msg].received[res].toLowerCase()) {
@@ -46,8 +46,30 @@ bot.on('messageCreate', async (message) => {
     }
 
     if (message.content.startsWith(PREFIX)) {
-        const CMD_NAME = message.content.substring(PREFIX.length);
-        console.log(CMD_NAME);
+        const [CMD_NAME, ...args] = message.content
+            .trim()
+            .substring(PREFIX.length)
+            .split(/\s+/);
+        
+        if (CMD_NAME === 'kick') {
+            if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
+                return message.reply('I do not have permissions to use that command lol');
+            
+            if (args.length === 0) message.reply('Please provide an ID.');
+            
+            const member = message.guild.members.cache.get(args[0]);
+            
+            if (member) {
+                member
+                    .kick()
+                    .then((member) => message.channel.send(`${member} was kicked.`))
+                    .catch((err) => message.channel.send('I cannot kick that user :('));
+            } else {
+                message.channel.send("I couldn't find that dude.");
+            }
+        } else if (CMD_NAME === 'ban') {
+            message.channel.send(`Banned ${args.join(', ')}`);
+        }
     }
 });
 
