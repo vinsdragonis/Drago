@@ -6,10 +6,10 @@ require('dotenv').config();
 const { Client, Intents, Permissions, MessageEmbed } = require('discord.js');
 const PREFIX = "$";
 
-const bot = new Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-    partials: ['MESSAGE', 'REACTION']
-});
+const bot = new Client(
+    {intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]},
+    {partials: ['MESSAGE', 'REACTION']},
+);
 
 bot.on('ready', () => {
     console.log(`${bot.user.username} has logged in`);
