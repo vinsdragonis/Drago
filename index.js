@@ -41,6 +41,8 @@ bot.on('messageCreate', async (message) => {
             .split(/\s+/);
         
         if (CMD_NAME === 'kick') {
+
+            // KICK MEMBERS
             if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
                 return message.reply('I do not have permissions to use that command :(');
             
@@ -57,6 +59,8 @@ bot.on('messageCreate', async (message) => {
                 message.channel.send("I couldn't find that dude.");
             }
         } else if (CMD_NAME === 'ban') {
+
+            // BAN MEMBER
             if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
                 return message.reply('I do not have permissions to use that command :(');
             
@@ -69,6 +73,8 @@ bot.on('messageCreate', async (message) => {
                 message.channel.send('An error occured. Either I do not have permissions or the user was not found');
             }
         } else if (CMD_NAME === 'unban') {
+
+            // UNBAN MEMBER
             if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
                 return message.reply('I do not have permissions to use that command :(');
             
@@ -80,6 +86,11 @@ bot.on('messageCreate', async (message) => {
             } catch (err) {
                 message.channel.send('An error occured. Either I do not have permissions or the user was not found');
             }
+        } else if (CMD_NAME === 'speed') {
+
+            // MESSAGE LATENCY
+            const timeTaken = Date.now() - message.createdTimestamp;
+            message.reply(`Latency of Message = ${timeTaken}ms.`);
         }
     }
 });
