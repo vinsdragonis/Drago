@@ -19,32 +19,21 @@ bot.on('messageCreate', async (message) => {
     if (message.author.bot) return;
     
     // GREETINGS
-    for (msg in greetings) {
-        for(res in greetings[msg].received) {
-            if (message.content.toLowerCase() === greetings[msg].received[res].toLowerCase()) {
-                message.channel.send(`${greetings[msg].reply}, ${message.author.username}!`);
-            }
-        }
+    if (greetings.some(x => x.received.includes(message.content))) {
+        message.channel.send(greetings.find(x => x.received.includes(message.content)).reply);
     }
 
     // DATE AND TIME
-    for (msg in dateAndTime) {
-        for (res in dateAndTime[msg].received) {
-            if (message.content.toLowerCase() === dateAndTime[msg].received[res].toLowerCase()) {
-                message.channel.send(`${dateAndTime[msg].reply}`);
-            }
-        }
+    if (dateAndTime.some(x => x.received.includes(message.content))) {
+        message.channel.send(dateAndTime.find(x => x.received.includes(message.content)).reply);
     }
 
     // DAD JOKES
-    for (msg in jokesAndPuns) {
-        for (res in jokesAndPuns[msg].received) {
-            if (message.content.toLowerCase() === jokesAndPuns[msg].received[res].toLowerCase()) {
-                message.channel.send(`${jokesAndPuns[msg].reply}`);
-            }
-        }
+    if (jokesAndPuns.some(x => x.received.includes(message.content))) {
+        message.channel.send(jokesAndPuns.find(x => x.received.includes(message.content)).reply);
     }
 
+    // GUILD MANAGEMENT
     if (message.content.startsWith(PREFIX)) {
         const [CMD_NAME, ...args] = message.content
             .trim()
@@ -77,7 +66,6 @@ bot.on('messageCreate', async (message) => {
                 const user = await message.guild.members.ban(args[0]);
                 message.channel.send(`${user} was banned successfully`);
             } catch (err) {
-                // console.log(err);
                 message.channel.send('An error occured. Either I do not have permissions or the user was not found');
             }
         } else if (CMD_NAME === 'unban') {
@@ -90,7 +78,6 @@ bot.on('messageCreate', async (message) => {
                 const user = await message.guild.members.unban(args[0]);
                 message.channel.send(`${user} was unbanned successfully`);
             } catch (err) {
-                // console.log(err);
                 message.channel.send('An error occured. Either I do not have permissions or the user was not found');
             }
         }
