@@ -82,7 +82,7 @@ bot.on('messageCreate', async (message) => {
             // SHOWS HELP
             const helpEmbed = new MessageEmbed()
                 .setColor("#0099ff")
-                .setTitle("Vulnahkriin's guide")
+                .setTitle("Drago's guide")
                 .setDescription("My prefix for commands is $")
                 .addFields(
                     { name: '$kick id', value: `Kicks user from server` },
