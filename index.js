@@ -1,6 +1,7 @@
 const greetings = require('./messages/greetings');
 const dateAndTime = require('./messages/dateAndTime');
 const jokesAndPuns = require('./messages/jokesAndPuns');
+const Joke_Pun_Quote = require('./parsers/jokeParser')
 require('dotenv').config();
 
 const { Client, Intents, Permissions, MessageEmbed } = require('discord.js');
@@ -30,7 +31,9 @@ bot.on('messageCreate', async (message) => {
 
     // DAD JOKES
     if (jokesAndPuns.some(x => x.received.includes(message.content))) {
-        message.channel.send(jokesAndPuns.find(x => x.received.includes(message.content)).reply);
+        if(jokesAndPuns.find(x => x.received.includes(message.content))) {
+            message.channel.send(Joke_Pun_Quote.getJoke())
+        }
     }
 
     // GUILD MANAGEMENT
