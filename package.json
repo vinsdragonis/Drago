@@ -21,7 +21,7 @@
   "dependencies": {
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
-    "jshint": "^2.13.4",
+    "jshint": "^2.13.6",
     "nodemon": "^2.0.20",
     "random-jokes-api": "^1.5.9"
   }
