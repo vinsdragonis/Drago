@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/vinsdragonis/Drago#readme",
   "dependencies": {
-    "discord.js": "^14.22.1",
+    "discord.js": "^14.23.2",
     "dotenv": "^17.2.3",
     "jshint": "^2.13.6",
     "nodemon": "^3.1.10",
